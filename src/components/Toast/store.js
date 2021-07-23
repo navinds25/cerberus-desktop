@@ -14,7 +14,7 @@ export const addToast = (toast) => {
     const defaults = {
         id: id,
         dismiss: true,
-        timeout: 8000,
+        timeout: 30000,
     };
     const t = {...defaults, ...toast };
     toasts.update((all) => [t, ...all]);

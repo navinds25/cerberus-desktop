@@ -17,7 +17,6 @@
             .catch((err) => {
                 addToast({
                     msg: err,
-                    dismiss: true,
                 });
             });
     }
@@ -29,7 +28,7 @@
     <button class="ls-main-button"><p>Open Database</p></button>
     <button class="ls-main-button"><p>New Database</p></button>
     <p class="ls-msg">Enter Password:</p>
-    <input bind:value={pass} />
+    <input bind:value={pass} type="password" />
     <button on:click={auth}>ok</button>
 </main>
 

@@ -1,27 +1,26 @@
 <script>
-    import { dismissToast, toasts } from "./store";
     import Toast from "./Toast.svelte";
+    import { toasts } from "./store.js";
 </script>
 
 {#if $toasts}
     <div class="toast-container">
         {#each $toasts as toast}
-            <Toast on:dismiss={() => dismissToast(toast.id)}>{toast.msg}</Toast>
+            <Toast id={toast.id} msg={toast.msg} dismiss={toast.dismiss} />
         {/each}
     </div>
 {/if}
 
 <style>
     .toast-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 10%;
         display: flex;
-        margin-top: 1rem;
+        align-items: center;
         justify-content: center;
+        z-index: 1000;
         flex-direction: column;
-        z-index: -1;
+        bottom: 1rem;
+        position: absolute;
+        right: 0;
+        left: 0;
     }
 </style>

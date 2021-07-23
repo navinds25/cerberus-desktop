@@ -1,53 +1,35 @@
 <script>
-  import { createEventDispatcher } from 'svelte'
-  import { fade } from 'svelte/transition'
-
-  const dispatch = createEventDispatcher()
-
-  export let type = 'error'
-  export let dismissible = true
+    export let id;
+    export let msg;
+    export let dismiss;
+    import { dismissToast } from "./store.js";
+    const boxClick = () => {
+        if (dismiss) {
+            dismissToast(id);
+        }
+    };
 </script>
 
-<article class={type} role="alert" transition:fade>
-  <div class="text">
-    <slot></slot>
-  </div>
+<button {id} class="toast-box" on:click={() => boxClick()}>
+    <p class="toast-msg">{msg}</p>
+</button>
 
-  {#if dismissible}
-    <button class="close" on:click={() => dispatch('dismiss')}>
-    </button>
-  {/if}
-</article>
-
-<style lang="postcss">
-  article {
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.2rem;
-    display: flex;
-    align-items: center;
-    margin: 0 auto 0.5rem auto;
-    width: 20rem;
-  }
-  .error {
-    background: IndianRed;
-  }
-  .success {
-    background: MediumSeaGreen;
-  }
-  .info {
-    background: SkyBlue;
-  }
-  .text {
-    margin-left: 1rem;
-  }
-  button {
-    color: white;
-    background: yellow;
-    border: 0 none;
-    padding: 0;
-    margin: 0 0 0 auto;
-    line-height: 1;
-    font-size: 1rem;
-  }
+<style>
+    .toast-box {
+        background-color: #26292e;
+        width: inherit;
+        height: 3rem;
+        border-radius: 1rem;
+        margin: 0.2rem;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        justify-self: center;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+    .toast-msg {
+        color: #c7c6c4;
+    }
 </style>
