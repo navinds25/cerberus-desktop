@@ -1,18 +1,25 @@
 <script>
     import { invoke } from "@tauri-apps/api/tauri";
+    import { addToast } from "../components/Toast/store";
+    import Toasts from "../components/Toast/Toasts.svelte";
 
-    let pass = '';
+    let pass = "";
 
     function auth() {
         console.log("clicked button");
-        invoke("authenticate", {masterPassword: pass})
+        invoke("authenticate", { masterPassword: pass })
             .then((msg) => {
                 console.log("auth success");
                 window.location.href = "/home";
                 console.log("auth success");
                 console.log(msg);
             })
-            .catch((err) => console.error(err));
+            .catch((err) => {
+                addToast({
+                    msg: err,
+                    dismiss: true,
+                });
+            });
     }
 </script>
 
@@ -22,7 +29,7 @@
     <button class="ls-main-button"><p>Open Database</p></button>
     <button class="ls-main-button"><p>New Database</p></button>
     <p class="ls-msg">Enter Password:</p>
-    <input bind:value={pass}/>
+    <input bind:value={pass} />
     <button on:click={auth}>ok</button>
 </main>
 

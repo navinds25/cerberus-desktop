@@ -12,6 +12,7 @@
     "@rollup/plugin-node-resolve": "^11.0.0",
     "@tauri-apps/cli": "^1.0.0-beta.6",
     "@types/page": "^1.11.3",
+    "eslint-plugin-svelte3": "^3.2.0",
     "rollup": "^2.3.4",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-livereload": "^2.0.0",
@@ -22,7 +23,8 @@
   "dependencies": {
     "@tauri-apps/api": "^1.0.0-beta.5",
     "page": "^1.11.6",
-    "sirv-cli": "^1.0.0"
+    "sirv-cli": "^1.0.0",
+    "uuid": "^8.3.2"
   },
   "main": "index.js",
   "author": "navinds25",
