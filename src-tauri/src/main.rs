@@ -6,8 +6,8 @@
 #[tauri::command]
 fn authenticate(master_password: String) -> Result<String, String> {
   println!("recieved master password: {}", master_password);
-  //Err("Authentication failed!".into())
-  return Ok("Authentication succeeded".into());
+  return Err("Authentication failed!".into());
+  //return Ok("Authentication succeeded".into());
 }
 
 fn main() {
